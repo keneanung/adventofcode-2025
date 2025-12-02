@@ -7,17 +7,14 @@ import (
 )
 
 func Solve(input []string) (int, error) {
-	return day2.AddInvalidIds(input, TwoSameSequences)
+	return day2.AddInvalidIds(input, hasTwoRepeatedHalves)
 }
 
-func TwoSameSequences(i int, result int) int {
+func hasTwoRepeatedHalves(i int) bool {
 	indexString := strconv.Itoa(i)
 	if len(indexString)%2 == 1 {
-		return result
+		return false
 	}
 	mid := len(indexString) / 2
-	if indexString[:mid] == indexString[mid:] {
-		result += i
-	}
-	return result
+	return indexString[:mid] == indexString[mid:]
 }

@@ -1,32 +1,36 @@
 package puzzle2
 
 import (
-	"github.com/hashicorp/go-set/v3"
 	"github.com/keneanung/adventofcode-2025/day2"
 	"strconv"
 )
 
 func Solve(input []string) (int, error) {
-	return day2.AddInvalidIds(input, RepeatedSequence)
+	return day2.AddInvalidIds(input, isRepeatedSequence)
 }
 
-func RepeatedSequence(i int, result int) int {
+func isRepeatedSequence(i int) bool {
+	if i <= 0 {
+		return false
+	}
 	indexString := strconv.Itoa(i)
-	indexStringRunes := []rune(indexString)
-	for l := len(indexString) / 2; l >= 1; l-- {
-		if len(indexString)%l != 0 {
+	indexLen := len(indexString)
+	for l := indexLen / 2; l >= 1; l-- {
+		if indexLen%l != 0 {
 			continue
 		}
-		chunked := make([]string, len(indexString)/l)
-		for start := 0; start+l <= len(indexString); start += l {
-			sequence := indexStringRunes[start : start+l]
-			chunked[start/l] = string(sequence)
+		stringStart := indexString[:l]
+		repeated := true
+		for start := l; start+l <= indexLen; start += l {
+			sequence := indexString[start : start+l]
+			if sequence != stringStart {
+				repeated = false
+				break
+			}
 		}
-		chunkSet := set.From(chunked)
-		if chunkSet.Size() == 1 {
-			result += i
-			return result
+		if repeated {
+			return true
 		}
 	}
-	return result
+	return false
 }

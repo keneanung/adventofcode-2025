@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func AddInvalidIds(input []string, invalidIdFunc func(int, int) int) (int, error) {
+func AddInvalidIds(input []string, invalidIdFunc func(int) bool) (int, error) {
 	if len(input) != 1 {
 		return 0, fmt.Errorf("expected single line input")
 	}
@@ -27,7 +27,9 @@ func AddInvalidIds(input []string, invalidIdFunc func(int, int) int) (int, error
 			return 0, fmt.Errorf("invalid end of range: %s", parts[1])
 		}
 		for i := start; i <= end; i++ {
-			result = invalidIdFunc(i, result)
+			if invalidIdFunc(i) {
+				result += i
+			}
 		}
 	}
 	return result, nil

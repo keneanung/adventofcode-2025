@@ -70,12 +70,12 @@ func main() {
 							return runSolver("day2", "puzzle1", day2Puzzle1.Solve)
 						},
 					},
-                    {
-                        Name: "puzzle2",
-                        Action: func(ctx context.Context, c *cli.Command) error {
-                            return runSolver("day2", "puzzle2", day2Puzzle2.Solve)
-                        },
-                    },
+					{
+						Name: "puzzle2",
+						Action: func(ctx context.Context, c *cli.Command) error {
+							return runSolver("day2", "puzzle2", day2Puzzle2.Solve)
+						},
+					},
 				},
 			},
 		},
