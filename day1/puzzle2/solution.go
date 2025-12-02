@@ -1,4 +1,5 @@
 package puzzle2
+
 import (
 	"github.com/keneanung/adventofcode-2025/day1"
 )
@@ -10,10 +11,7 @@ func Solve(input []string) (int, error) {
 	}
 	result := 0
 	for _, step := range steps {
-		if step.ResultValue == 0 {
-			result++
-		}
-		result += step.ZeroPasses
+		result += step.Wraps
 	}
 	return result, nil
 }

@@ -27,16 +27,16 @@ func readLines(path string) ([]string, error) {
 }
 
 func runSolver(day string, puzzle string, solver func([]string) (int, error)) error {
-    lines, err := readLines(day + "/input.txt")
-    if err != nil {
-        return err
-    }
-    result, err := solver(lines)
-    if err != nil {
-        return err
-    }
-    println("Solution for " + day + " " + puzzle + ": " + strconv.Itoa(result))
-    return nil
+	lines, err := readLines(day + "/input.txt")
+	if err != nil {
+		return err
+	}
+	result, err := solver(lines)
+	if err != nil {
+		return err
+	}
+	println("Solution for " + day + " " + puzzle + ": " + strconv.Itoa(result))
+	return nil
 }
 
 func main() {

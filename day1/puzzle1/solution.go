@@ -11,7 +11,7 @@ func Solve(input []string) (int, error) {
 	}
 	result := 0
 	for _, step := range steps {
-		if step.ResultValue == 0 {
+		if step.Position == 0 {
 			result++
 		}
 	}
