@@ -5,7 +5,6 @@ import (
 )
 
 func TestSolve(t *testing.T) {
-	// read input from test_intput.txt
 	testInput := []struct {
 		name     string
 		input    []string
