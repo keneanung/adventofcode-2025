@@ -30,7 +30,7 @@ func readLines(path string) ([]string, error) {
 	return lines, scanner.Err()
 }
 
-func runSolver(day string, puzzle string, solver func([]string) (int, error)) error {
+func runSolver(day string, puzzle string, solver func([]string) (int64, error)) error {
 	lines, err := readLines(day + "/input.txt")
 	if err != nil {
 		return err
@@ -39,7 +39,7 @@ func runSolver(day string, puzzle string, solver func([]string) (int, error)) er
 	if err != nil {
 		return err
 	}
-	println("Solution for " + day + " " + puzzle + ": " + strconv.Itoa(result))
+	println("Solution for " + day + " " + puzzle + ": " + strconv.FormatInt(result, 10))
 	return nil
 }
 

@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-func Solve(input []string) (int, error) {
+func Solve(input []string) (int64, error) {
 	return day2.AddInvalidIds(input, isRepeatedSequence)
 }
 

@@ -8,7 +8,7 @@ func TestSolve(t *testing.T) {
 	testInput := []struct {
 		name     string
 		input    []string
-		expected int
+		expected int64
 	}{
 		{
 			name:     "example",

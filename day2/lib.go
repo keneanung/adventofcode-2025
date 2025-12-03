@@ -6,11 +6,11 @@ import (
 	"strings"
 )
 
-func AddInvalidIds(input []string, invalidIdFunc func(int) bool) (int, error) {
+func AddInvalidIds(input []string, invalidIdFunc func(int) bool) (int64, error) {
 	if len(input) != 1 {
 		return 0, fmt.Errorf("expected single line input")
 	}
-	result := 0
+	result := int64(0)
 	for idRange := range strings.SplitSeq(input[0], ",") {
 		parts := strings.Split(idRange, "-")
 		if len(parts) != 2 {
@@ -28,7 +28,7 @@ func AddInvalidIds(input []string, invalidIdFunc func(int) bool) (int, error) {
 		}
 		for i := start; i <= end; i++ {
 			if invalidIdFunc(i) {
-				result += i
+				result += int64(i)
 			}
 		}
 	}

@@ -6,7 +6,7 @@ import (
 	"github.com/keneanung/adventofcode-2025/day2"
 )
 
-func Solve(input []string) (int, error) {
+func Solve(input []string) (int64, error) {
 	return day2.AddInvalidIds(input, hasTwoRepeatedHalves)
 }
 
