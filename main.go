@@ -12,6 +12,8 @@ import (
 	day2Puzzle2 "github.com/keneanung/adventofcode-2025/day2/puzzle2"
 	day3Puzzle1 "github.com/keneanung/adventofcode-2025/day3/puzzle1"
 	day3Puzzle2 "github.com/keneanung/adventofcode-2025/day3/puzzle2"
+	day4Puzzle1 "github.com/keneanung/adventofcode-2025/day4/puzzle1"
+	day4Puzzle2 "github.com/keneanung/adventofcode-2025/day4/puzzle2"
 	"github.com/urfave/cli/v3"
 )
 
@@ -93,6 +95,23 @@ func main() {
 						Name: "puzzle2",
 						Action: func(ctx context.Context, c *cli.Command) error {
 							return runSolver("day3", "puzzle2", day3Puzzle2.Solve)
+						},
+					},
+				},
+			},
+			{
+				Name: "day4",
+				Commands: []*cli.Command{
+					{
+						Name: "puzzle1",
+						Action: func(ctx context.Context, c *cli.Command) error {
+							return runSolver("day4", "puzzle1", day4Puzzle1.Solve)
+						},
+					},
+					{
+						Name: "puzzle2",
+						Action: func(ctx context.Context, c *cli.Command) error {
+							return runSolver("day4", "puzzle2", day4Puzzle2.Solve)
 						},
 					},
 				},

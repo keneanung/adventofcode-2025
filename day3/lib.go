@@ -30,7 +30,7 @@ func GetJoltage(input []string, numberOfBatteries int) (int64, error) {
 			searchWindowStart := largestDigitIndex + 1
 			// leave at least i characters (the number of missing digits) at the end to reach the target length
 			searchWindowEnd := len(lineBytes) - missingDigits
-			for i:= searchWindowStart; i < searchWindowEnd; i++ {
+			for i := searchWindowStart; i < searchWindowEnd; i++ {
 				char := lineBytes[i]
 				if char > largestDigit {
 					largestDigit = char
