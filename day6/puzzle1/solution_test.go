@@ -1,4 +1,4 @@
-package puzzle2
+package puzzle1
 
 import (
 	"testing"
@@ -12,18 +12,11 @@ func TestSolve(t *testing.T) {
 	}{
 		{
 			name: "example",
-			input: []string{"3-5",
-				"10-14",
-				"16-20",
-				"12-18",
-				"",
-				"1",
-				"5",
-				"8",
-				"11",
-				"17",
-				"32"},
-			expected: 14,
+			input: []string{"123 328  51 64 ",
+				" 45 64  387 23 ",
+				"  6 98  215 314",
+				"*   +   *   +  "},
+			expected: 4277556,
 		},
 	}
 
