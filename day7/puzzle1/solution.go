@@ -1,22 +1,16 @@
 package puzzle1
 
+import "github.com/keneanung/adventofcode-2025/day7"
+
 func Solve(input []string) (int64, error) {
-	beams := make([]bool, len(input[0]))
-	result := 0
-	for row := range input {
-		line := input[row]
-		for col := 0; col < len(line); col++ {
-			if line[col] == 'S' {
-				beams[col] = true
-				continue
-			}
-			if line[col] == '^' && beams[col] {
-				result++
-				beams[col] = false
-				beams[col-1] = true
-				beams[col+1] = true
-			}
+	_, result, err := day7.IterateInput(input, func(newBeams *[]int, beams []int, col int) bool {
+		if beams[col] > 0 {
+			(*newBeams)[col] = 0
+			(*newBeams)[col-1] = 1
+			(*newBeams)[col+1] = 1
+			return true
 		}
-	}
-	return int64(result), nil
+		return false
+	})
+	return result, err
 }

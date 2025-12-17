@@ -1,33 +1,28 @@
-package day6
+package day7
 
-import (
-	"fmt"
-)
-
-type Problem struct {
-	Operand byte
-	Values  []int
-}
-
-func GetResult(problems []Problem) (int64, error) {
-	result := int64(0)
-	for i, p := range problems {
-		switch p.Operand {
-		case '*':
-			prod := int64(1)
-			for _, v := range p.Values {
-				prod *= int64(v)
+func IterateInput(input []string, splitterCallback func(*[]int, []int, int) bool) ([]int, int64, error) {
+	length := len(input[0])
+	var beams []int
+	counter := 0
+	for row := range input {
+		line := input[row]
+		newBeams := make([]int, length)
+		for col := range line {
+			switch line[col] {
+			case '.':
+				if beams != nil {
+					newBeams[col] += beams[col]
+				}
+			case 'S':
+				newBeams[col] = 1
+			case '^':
+				resultedInSplit := splitterCallback(&newBeams, beams, col)
+				if resultedInSplit {
+					counter++
+				}
 			}
-			result += prod
-		case '+':
-			sum := int64(0)
-			for _, v := range p.Values {
-				sum += int64(v)
-			}
-			result += sum
-		default:
-			return 0, fmt.Errorf("problem %d: unknown operand %q", i, p.Operand)
 		}
+		beams = newBeams
 	}
-	return result, nil
+	return beams, int64(counter), nil
 }
